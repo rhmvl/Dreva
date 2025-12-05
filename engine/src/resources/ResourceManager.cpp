@@ -4,7 +4,7 @@
 
 namespace fs = std::filesystem;
 
-namespace dreva::engine
+namespace kine
 {
 
 ResourceManager::ResourceManager()
@@ -105,4 +105,4 @@ void ResourceManager::shutdown()
     fileIndex.clear();
 }
 
-}  // namespace dreva::engine
+}  // namespace kine

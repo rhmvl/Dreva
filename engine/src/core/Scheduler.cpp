@@ -1,6 +1,6 @@
 #include "Scheduler.hpp"
 
-namespace dreva::engine
+namespace kine
 {
 
 bool Scheduler::addSystem(std::string name, SystemFunc func)
@@ -90,4 +90,4 @@ void Scheduler::fixedUpdate(entt::registry& reg, float& accumulator, float fixed
     }
 }
 
-}  // namespace dreva::engine
+}  // namespace kine

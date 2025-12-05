@@ -2,7 +2,7 @@
 
 #include <raylib.h>
 
-namespace dreva::engine
+namespace kine
 {
 
 Renderer::Renderer(ResourceManager* resourceManager, RenderList* list) : resources(resourceManager), list(list) {}
@@ -32,4 +32,4 @@ void Renderer::render()
     EndDrawing();
 };
 
-}  // namespace dreva::engine
+}  // namespace kine

@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include <vector>
 
-namespace dreva::engine
+// TODO
+namespace kine
 {
 
 class ResourceManager
@@ -32,4 +33,4 @@ class ResourceManager
     Texture2D* errorTexture = nullptr;
 };
 
-}  // namespace dreva::engine
+}  // namespace kine

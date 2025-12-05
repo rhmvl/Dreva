@@ -2,7 +2,7 @@
 
 #include <raylib.h>
 
-namespace dreva::engine
+namespace kine
 {
 
 Input::Input() {}
@@ -30,4 +30,4 @@ bool Input::isActionDown(InputAction action) const
     return false;
 }
 
-}  // namespace dreva::engine
+}  // namespace kine

@@ -1,15 +1,15 @@
-#include "Engine.hpp"
+#include "Kine.hpp"
 
 #include <memory>
 #include "raylib.h"
 
-namespace dreva::engine
+namespace kine
 {
 
-Engine::Engine() = default;
-Engine::~Engine() = default;
+Kine::Kine() = default;
+Kine::~Kine() = default;
 
-void Engine::init()
+void Kine::init()
 {
     time = std::make_unique<Time>();
     input = std::make_unique<Input>();
@@ -26,13 +26,13 @@ void Engine::init()
     running = true;
 }
 
-void Engine::beginFrame()
+void Kine::beginFrame()
 {
     time->beginFrame();
     if (WindowShouldClose()) running = false;
 }
 
-void Engine::update()
+void Kine::update()
 {
     float dt = time->dt;
 
@@ -40,13 +40,13 @@ void Engine::update()
     scheduler->fixedUpdate(reg, time->accumulator, time->fixedDt);
 }
 
-void Engine::renderFrame() { renderer->render(); }
+void Kine::renderFrame() { renderer->render(); }
 
-bool Engine::isRunning() const { return running; }
+bool Kine::isRunning() const { return running; }
 
-void Engine::shutdown()
+void Kine::shutdown()
 {
     resourceManager->shutdown();
     CloseWindow();
 }
-}  // namespace dreva::engine
+}  // namespace kine

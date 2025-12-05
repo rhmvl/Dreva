@@ -2,7 +2,7 @@
 
 #include <raylib.h>
 
-namespace dreva::engine
+namespace kine
 {
 
 void Time::beginFrame()
@@ -11,4 +11,4 @@ void Time::beginFrame()
     accumulator += dt;
 }
 
-}  // namespace dreva::engine
+}  // namespace kine

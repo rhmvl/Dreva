@@ -172,7 +172,7 @@ format:
 		echo "> clang-format is not found"; \
 		exit 1; \
 	fi
-	@find src -type f \( -name "*.h" -o -name "*.cpp" \) | while read -r FILE; do \
+	@find engine game -type f \( -name "*.hpp" -o -name "*.cpp" \) | while read -r FILE; do \
 		echo "> Formatting $$FILE"; \
 		clang-format -i "$$FILE"; \
 	done

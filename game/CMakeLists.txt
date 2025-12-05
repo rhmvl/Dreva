@@ -25,3 +25,20 @@ add_custom_command(
         "${CMAKE_SOURCE_DIR}/assets"
         "${CMAKE_SOURCE_DIR}/bin/assets"
 )
+
+if (MSVC)
+    target_compile_options(Dreva PRIVATE
+        /W4 /WX /permissive- /Zc:__cplusplus
+    )
+else()
+    target_compile_options(Dreva PRIVATE
+        -Wall
+        -Wextra
+        -Wpedantic
+        -Werror
+        -Wshadow
+        -Wconversion
+        -Wsign-conversion
+        -Wunused
+    )
+endif()
