@@ -1,8 +1,8 @@
 #pragma once
-#include <Engine.hpp>
+#include "Kine.hpp"
 
 class Game
 {
    public:
-    void init(dreva::engine::Engine& engine);
+    void init(kine::Kine& engine);
 };

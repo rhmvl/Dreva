@@ -1,6 +1,7 @@
 #include "Game.hpp"
+#define UNUSED(expr) (void)(expr)
 
-using namespace dreva::engine;
+using namespace kine;
 
 void Test(entt::registry& reg, float dt)
 {
@@ -15,9 +16,11 @@ void Test(entt::registry& reg, float dt)
                  .rotation = 0,
                  .scale = 1,
                  .tint = WHITE});
+
+    UNUSED(dt);
 }
 
-void Game::init(Engine& engine)
+void Game::init(Kine& engine)
 {
     auto& sched = engine.getScheduler();
 

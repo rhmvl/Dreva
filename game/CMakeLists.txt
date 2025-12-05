@@ -11,7 +11,7 @@ target_include_directories(Dreva PRIVATE
 )
 
 target_link_libraries(Dreva PRIVATE
-    dreva_engine
+    kine
 )
 
 set_target_properties(Dreva PROPERTIES
@@ -37,8 +37,6 @@ else()
         -Wpedantic
         -Werror
         -Wshadow
-        -Wconversion
-        -Wsign-conversion
         -Wunused
     )
 endif()

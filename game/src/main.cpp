@@ -1,11 +1,10 @@
-#include <Engine.hpp>
 #include "core/Game.hpp"
 
-using namespace dreva::engine;
+using namespace kine;
 
 int main(void)
 {
-    Engine engine;
+    Kine engine;
     engine.init();
 
     Game game;
