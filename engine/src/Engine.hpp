@@ -2,11 +2,12 @@
 #include <raylib.h>
 #include <memory>
 
-#include "io/Input.hpp"
-#include "rendering/Renderer.hpp"
-#include "resources/ResourceManager.hpp"
 #include "core/Scheduler.hpp"
 #include "core/Time.hpp"
+#include "io/Input.hpp"
+#include "rendering/RenderList.hpp"
+#include "rendering/Renderer.hpp"
+#include "resources/ResourceManager.hpp"
 
 namespace dreva::engine
 {
@@ -27,6 +28,7 @@ class Engine
 
     float deltaTime() const { return time->dt; }
     entt::registry& getRegistry() { return reg; }
+    Scheduler& getScheduler() { return *scheduler; }
 
    private:
     bool running = false;
@@ -34,8 +36,10 @@ class Engine
     std::unique_ptr<Time> time;
     std::unique_ptr<Input> input;
     std::unique_ptr<Scheduler> scheduler;
+
     std::shared_ptr<ResourceManager> resourceManager;
     std::shared_ptr<Renderer> renderer;
+    std::shared_ptr<RenderList> renderList;
 
     entt::registry reg;
 };

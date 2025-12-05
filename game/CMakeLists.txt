@@ -1,6 +1,7 @@
 file(GLOB_RECURSE GAME_SOURCES
     "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/**/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/**/**/*.cpp"
 )
 
 add_executable(Dreva ${GAME_SOURCES})

@@ -1,16 +1,21 @@
 #include <Engine.hpp>
+#include "core/Game.hpp"
 
-int main()
+using namespace dreva::engine;
+
+int main(void)
 {
-    dreva::engine::Engine engine;
+    Engine engine;
     engine.init();
+
+    Game game;
+    game.init(engine);
 
     while (engine.isRunning())
     {
-        engine.beginFrame();  // ticks Time, Input, etc
+        engine.beginFrame();
         engine.update();
-        // game.update(engine.getRegistry(), engine.deltaTime());
-        engine.renderFrame();  // renderer->render()
+        engine.renderFrame();
     }
 
     engine.shutdown();

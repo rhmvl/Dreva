@@ -15,9 +15,13 @@ void Engine::init()
     input = std::make_unique<Input>();
     scheduler = std::make_unique<Scheduler>();
     resourceManager = std::make_shared<ResourceManager>();
-    renderer = std::make_unique<Renderer>(resourceManager.get());
+    renderList = std::make_unique<RenderList>();
+    renderer = std::make_unique<Renderer>(resourceManager.get(), renderList.get());
 
-    renderer->init();
+    reg.ctx().emplace<RenderList&>(*renderList);
+    reg.ctx().emplace<ResourceManager&>(*resourceManager);
+
+    renderer->init(1280, 720, "Dreva");
     resourceManager->init();
     running = true;
 }
