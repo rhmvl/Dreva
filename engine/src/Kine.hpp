@@ -5,6 +5,7 @@
 #include "core/Scheduler.hpp"
 #include "core/Time.hpp"
 #include "io/Input.hpp"
+#include "rendering/RenderBatcher.hpp"
 #include "rendering/RenderList.hpp"
 #include "rendering/Renderer.hpp"
 #include "resources/ResourceManager.hpp"
@@ -81,6 +82,7 @@ class Kine
 
     std::shared_ptr<ResourceManager> resourceManager;  ///< Resource loader/cache
     std::shared_ptr<Renderer> renderer;                ///< Rendering backend
+    std::shared_ptr<RenderBatcher> renderBatcher;      ///< Rendering backend
     std::shared_ptr<RenderList> renderList;            ///< List of render commands
 
     entt::registry reg;  ///< Main ECS registry

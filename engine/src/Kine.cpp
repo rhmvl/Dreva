@@ -14,9 +14,12 @@ void Kine::init()
     time = std::make_unique<Time>();
     input = std::make_unique<Input>();
     scheduler = std::make_unique<Scheduler>();
+
     resourceManager = std::make_shared<ResourceManager>();
+
     renderList = std::make_unique<RenderList>();
-    renderer = std::make_unique<Renderer>(resourceManager.get(), renderList.get());
+    renderBatcher = std::make_unique<RenderBatcher>(resourceManager.get());
+    renderer = std::make_unique<Renderer>(resourceManager.get(), renderList.get(), renderBatcher.get());
 
     reg.ctx().emplace<RenderList&>(*renderList);
     reg.ctx().emplace<ResourceManager&>(*resourceManager);
@@ -40,13 +43,17 @@ void Kine::update()
     scheduler->fixedUpdate(reg, time->accumulator, time->fixedDt);
 }
 
-void Kine::renderFrame() { renderer->render(); }
+void Kine::renderFrame()
+{
+    renderer->render();
+    renderer->endFrame();
+}
 
 bool Kine::isRunning() const { return running; }
 
 void Kine::shutdown()
 {
     resourceManager->shutdown();
-    CloseWindow();
+    renderer->shutdown();
 }
 }  // namespace kine

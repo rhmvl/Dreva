@@ -16,9 +16,9 @@ class RenderList
 {
    public:
     /**
-     * @brief Adds a render command to the list.
+     * @brief Preallocates command storage for efficiency.
      */
-    void submit(const RenderCommand& cmd) { commands.push_back(cmd); }
+    RenderList();
 
     /**
      * @brief Returns all stored commands.
@@ -29,6 +29,27 @@ class RenderList
      * @brief Removes all commands after rendering.
      */
     void clear() { commands.clear(); }
+
+    /**
+     * @brief Appends a sprite drawing command.
+     */
+    void addSprite(const std::string& textureName, float x, float y, float rotation, float pivotX, float pivotY,
+                   float scale = 1, int32_t layer = 1);
+    /**
+     * @brief Appends a filled rectangle draw command.
+     */
+    void addRect(float x, float y, float w, float h, std::array<float, 4> color, float scale = 1, int32_t layer = 1);
+
+    /**
+     * @brief Appends a circle draw command.
+     */
+    void addCircle(float x, float y, float radius, std::array<float, 4> color, float scale = 1, int32_t layer = 1);
+
+    /**
+     * @brief Appends a line draw command.
+     */
+    void addLine(float x1, float y1, float x2, float y2, float thickness, std::array<float, 4> color, float scale = 1,
+                 int32_t layer = 1);
 
    private:
     std::vector<RenderCommand> commands;  ///< All draw commands for current frame

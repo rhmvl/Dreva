@@ -6,8 +6,8 @@ UseTab: Never
 
 BreakBeforeBraces: Allman
 
-IndentCaseBlocks: true
-IndentCaseLabels: true
+IndentCaseBlocks: false
+IndentCaseLabels: false
 IndentGotoLabels: false
 
 ColumnLimit: 120
