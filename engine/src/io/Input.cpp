@@ -5,9 +5,7 @@
 namespace kine
 {
 
-Input::Input() {
-    bindAction(InputAction::RELOAD, KEY_R);
-}
+Input::Input() { bindAction(InputAction::RELOAD, KEY_R); }
 
 bool Input::keyDown(int key) const { return IsKeyDown(key); }
 bool Input::keyPressed(int key) const { return IsKeyPressed(key); }

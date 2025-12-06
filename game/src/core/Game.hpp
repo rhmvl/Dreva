@@ -9,7 +9,7 @@ class Game
 {
    public:
     Game(kine::Kine& kine);
-    
+
     void init();
     void update();
 
