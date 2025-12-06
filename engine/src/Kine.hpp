@@ -73,6 +73,11 @@ class Kine
      */
     Scheduler& getScheduler() { return *scheduler; }
 
+    /**
+     * @brief Access to the input
+     */
+    Input& getInput() { return *input; }
+
    private:
     bool running = false;  ///< Whether the engine is active
 

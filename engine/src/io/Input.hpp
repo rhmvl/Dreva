@@ -11,6 +11,7 @@ namespace kine
  */
 enum class InputAction
 {
+    RELOAD
 };
 
 /**

@@ -51,7 +51,7 @@ struct RenderCommand
     /**
      * @brief RGBA color, float-based, deterministic.
      */
-    std::array<float, 4> color{1.0f, 1.0f, 1.0f, 1.0f};
+    std::array<float, 4> color{255.0f, 255.0f, 255.0f, 255.0f};
 };
 
 }  // namespace kine

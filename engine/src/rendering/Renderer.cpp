@@ -185,8 +185,8 @@ void Renderer::drawBatchesVirtual()
 
 inline static Color toRayColor(const std::array<float, 4>& c)
 {
-    return Color{static_cast<unsigned char>((c[0] * 255)), static_cast<unsigned char>((c[1] * 255)),
-                 static_cast<unsigned char>((c[2] * 255)), static_cast<unsigned char>((c[3] * 255))};
+    return Color{static_cast<unsigned char>((c[0])), static_cast<unsigned char>((c[1])),
+                 static_cast<unsigned char>((c[2])), static_cast<unsigned char>((c[3]))};
 }
 
 void Renderer::drawSprite(const RenderCommand* cmd, const Texture2D* tex)
