@@ -8,8 +8,8 @@ int main(void)
     Kine engine;
     engine.init();
 
-    core::Game game;
-    game.init(engine);
+    core::Game game(engine);
+    game.init();
 
     while (engine.isRunning())
     {

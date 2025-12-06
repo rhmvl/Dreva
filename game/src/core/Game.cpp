@@ -1,42 +1,45 @@
 #include "Game.hpp"
-#include <glm/ext/vector_int2.hpp>
-#define UNUSED(expr) (void) (expr)
-
-using namespace kine;
-
-std::array<float, 4> toColor(Color c)
-{
-    std::array<float, 4> color;
-
-    color[0] = static_cast<float>(c.r) / 255.0f;  // Red
-    color[1] = static_cast<float>(c.g) / 255.0f;  // Green
-    color[2] = static_cast<float>(c.b) / 255.0f;  // Blue
-    color[3] = static_cast<float>(c.a) / 255.0f;  // Alpha
-
-    return color;
-}
 
 namespace dreva::core
 {
-void Test(entt::registry& reg, float dt)
+
+void WorldRenderTest(entt::registry& reg, float dt)
 {
-    auto& list = reg.ctx().get<RenderList>();
+    (void) dt;
 
-    list.addSprite("error", 100, 100, 0, 0, 0, 1);
-    list.addCircle(300, 300, 20, toColor(WHITE));
-    list.addLine(1, 1, 120, 120, 10, toColor(WHITE));
-    list.addRect(320, 20, 100, 130, toColor(WHITE));
+    auto& world = reg.ctx().get<world::World>();
+    auto& render = reg.ctx().get<kine::RenderList>();
+    const int tileSize = 32;
 
-    UNUSED(dt);
+    for (auto& island : world.islands)
+    {
+        glm::vec2 pos = island->position;
+        for (int y = 0; y <= island->height; ++y)
+        {
+            render.addLine(pos.x, pos.y + y * tileSize, pos.x + island->width * tileSize, pos.y + y * tileSize, 1.0f,
+                           {255, 255, 255, 255});
+        }
+        for (int x = 0; x <= island->width; ++x)
+        {
+            render.addLine(pos.x + x * tileSize, pos.y, pos.x + x * tileSize, pos.y + island->height * tileSize, 1.0f,
+                           {255, 255, 255, 255});
+        }
+    }
 }
 
-void Game::init(Kine& engine)
+Game::Game(kine::Kine& kine) : engine(kine) {}
+
+void Game::init()
 {
     auto& sched = engine.getScheduler();
-    engine.getRegistry().ctx().emplace<world::World*>(&world);
+    world = std::make_shared<world::World>();
 
-    world.getTile(glm::ivec2(100, 200));
+    engine.getRegistry().ctx().emplace<world::World&>(*world);
+    world::Island& island = world->createIsland(10, 10);
+    island.position = {40, 40};
 
-    sched.addSystem("Test", Test);
+    sched.addSystem("WorldRenderTest", WorldRenderTest);
 }
+
+void Game::update() {}
 }  // namespace dreva::core

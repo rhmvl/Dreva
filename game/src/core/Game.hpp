@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Kine.hpp"
 #include "world/World.hpp"
 
@@ -7,9 +8,13 @@ namespace dreva::core
 class Game
 {
    public:
-    void init(kine::Kine& engine);
+    Game(kine::Kine& kine);
+    
+    void init();
+    void update();
 
    private:
-    world::World world;
+    kine::Kine& engine;
+    std::shared_ptr<world::World> world;
 };
 }  // namespace dreva::core
